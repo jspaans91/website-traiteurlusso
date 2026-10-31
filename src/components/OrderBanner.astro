@@ -1,0 +1,57 @@
+---
+import { locations } from "../data/locations";
+---
+
+<section class="order-banner">
+  <div class="container order-inner">
+    <div class="order-copy">
+      <h2>Bestellen?</h2>
+      <p>Bel ons en plaats eenvoudig je bestelling!</p>
+    </div>
+    <div class="order-actions">
+      {locations.map((loc) => (
+        <a class="btn btn-light" href={`tel:${loc.phoneHref}`}>
+          {loc.name}
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .order-banner {
+    background: var(--color-ink);
+    color: #fff;
+    padding: 2.75rem 0;
+  }
+
+  .order-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  .order-copy h2 {
+    margin-bottom: 0.3rem;
+  }
+
+  .order-copy p {
+    margin: 0;
+    color: #c7c7c7;
+  }
+
+  .order-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 700px) {
+    .order-inner {
+      text-align: center;
+      justify-content: center;
+    }
+  }
+</style>

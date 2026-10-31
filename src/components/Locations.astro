@@ -1,0 +1,98 @@
+---
+import { locations, openingHours } from "../data/locations";
+---
+
+<section class="section" id="locaties">
+  <div class="container">
+    <p class="eyebrow">Bezoek ons</p>
+    <h2 class="section-title">Onze locaties</h2>
+    <p class="section-lead">
+      Gevestigd in het centrum van Den Haag, tegenover Hotel Des Indes, en aan
+      de Theresiastraat.
+    </p>
+
+    <div class="locations-grid">
+      {locations.map((loc) => (
+        <article class="location-card">
+          <h3>{loc.name}</h3>
+          <p>{loc.street}<br />{loc.postal} {loc.city}</p>
+          <a class="phone" href={`tel:${loc.phoneHref}`}>{loc.phone}</a>
+          <a
+            class="btn btn-outline"
+            href={`https://www.google.com/maps/dir/?api=1&destination=${loc.mapsQuery}`}
+            target="_blank"
+            rel="noopener"
+          >
+            Routeplanner
+          </a>
+        </article>
+      ))}
+
+      <article class="hours-card">
+        <h3>Openingstijden</h3>
+        <ul>
+          {openingHours.map((o) => (
+            <li><span>{o.days}</span><span>{o.hours}</span></li>
+          ))}
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .locations-grid {
+    margin-top: 2.5rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .location-card,
+  .hours-card {
+    background: var(--color-surface-alt);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 1.8rem;
+  }
+
+  .location-card h3,
+  .hours-card h3 {
+    margin-bottom: 0.6rem;
+  }
+
+  .location-card p {
+    color: var(--color-muted);
+    font-size: 0.92rem;
+  }
+
+  .phone {
+    display: block;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+  }
+
+  .hours-card ul {
+    list-style: none;
+  }
+
+  .hours-card li {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--color-border);
+    font-size: 0.92rem;
+  }
+
+  .hours-card li:last-child {
+    border-bottom: none;
+  }
+
+  @media (max-width: 900px) {
+    .locations-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

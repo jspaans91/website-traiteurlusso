@@ -1,0 +1,231 @@
+---
+import { locations, openingHours } from "../data/locations";
+import { socialIcons } from "./icons";
+
+const year = new Date().getFullYear();
+
+const socials = [
+  { name: "facebook", label: "Facebook", href: "https://nl-nl.facebook.com/Gastronomialusso/" },
+  { name: "instagram", label: "Instagram", href: "https://www.instagram.com/gastronomia.lusso/" },
+  {
+    name: "tripadvisor",
+    label: "Tripadvisor",
+    href: "https://www.tripadvisor.nl/Restaurant_Review-g188633-d7995639-Reviews-Lusso-The_Hague_South_Holland_Province.html?m=19905",
+  },
+];
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-col">
+      <a href="/" class="logo">
+        <img src="/images/logo-seal.png" alt="Gastronomia Lusso" class="logo-mark" width="64" height="64" />
+        <span class="logo-text">Gastronomia Lusso</span>
+      </a>
+      <p>
+        Bij Lusso kun je genieten van de lekkerste Italiaanse broodjes,
+        pasta's en desserts in Den Haag. Kom snel langs en ervaar het zelf!
+      </p>
+      <ul class="socials">
+        {socials.map((s) => (
+          <li>
+            <a href={s.href} target="_blank" rel="noopener" aria-label={s.label}>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d={socialIcons[s.name]} /></svg>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h3>Onze locaties</h3>
+      {locations.map((loc) => (
+        <div class="footer-location">
+          <p class="location-name">{loc.name}</p>
+          <p>{loc.street},<br />{loc.postal}, {loc.city}</p>
+          <a href={`tel:${loc.phoneHref}`}>{loc.phone}</a>
+          <br />
+          <a
+            href={`https://www.google.com/maps/dir/?api=1&destination=${loc.mapsQuery}`}
+            target="_blank"
+            rel="noopener"
+          >
+            Routeplanner {loc.name}
+          </a>
+        </div>
+      ))}
+    </div>
+
+    <div class="footer-col">
+      <h3>Links</h3>
+      <ul class="footer-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/menu/">Menu</a></li>
+        <li><a href="/over-ons/">Over ons</a></li>
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h3>Openingstijden</h3>
+      <ul class="hours">
+        {openingHours.map((o) => (
+          <li><span>{o.days}</span><span>{o.hours}</span></li>
+        ))}
+      </ul>
+      <a class="btn btn-primary" href={`tel:${locations[0].phoneHref}`}>Bel ons</a>
+    </div>
+  </div>
+
+  <div class="container copyright">
+    <p>Copyright © {year} Gastronomia Lusso</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--color-ink);
+    color: #efefef;
+    padding: 3.5rem 0 1.5rem;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1.3fr 1fr 1.6fr;
+    gap: 2.5rem;
+  }
+
+  .footer-col h3 {
+    color: #fff;
+    font-size: 1.05rem;
+    margin-bottom: 1rem;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+  }
+
+  .logo-mark {
+    height: 64px;
+    width: 64px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .logo-text {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #fff;
+  }
+
+  .footer-col p {
+    color: #c7c7c7;
+    font-size: 0.92rem;
+  }
+
+  .socials {
+    display: flex;
+    gap: 0.75rem;
+    list-style: none;
+    margin-top: 1rem;
+  }
+
+  .socials a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    transition: background 0.15s ease, transform 0.15s ease;
+  }
+
+  .socials a:hover {
+    background: var(--color-primary);
+    transform: translateY(-2px);
+  }
+
+  .socials svg {
+    width: 18px;
+    height: 18px;
+    fill: #efefef;
+  }
+
+  .socials a:hover svg {
+    fill: var(--color-ink);
+  }
+
+  .footer-location {
+    margin-bottom: 1.4rem;
+    font-size: 0.92rem;
+  }
+
+  .location-name {
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 0.3rem;
+  }
+
+  .footer-location a {
+    color: var(--color-primary);
+    font-size: 0.88rem;
+  }
+
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .footer-links a {
+    color: #c7c7c7;
+    font-size: 0.92rem;
+  }
+
+  .footer-links a:hover {
+    color: var(--color-primary);
+  }
+
+  .hours {
+    list-style: none;
+    margin-bottom: 1.5rem;
+  }
+
+  .hours li {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 0.6rem;
+    font-size: 0.82rem;
+    color: #c7c7c7;
+    padding: 0.3rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    white-space: nowrap;
+  }
+
+  .copyright {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.82rem;
+    color: #999;
+  }
+
+  @media (max-width: 900px) {
+    .footer-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 560px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

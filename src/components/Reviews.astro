@@ -1,0 +1,73 @@
+---
+const reviews = [
+  {
+    name: "Brian Heeren",
+    text: "Vandaag hier gelunched samen met mijn vriendin. Wat een vriendelijk personeel zeg! En dan de broodjes, die waren werkelijk heerlijk! Echt niks op aan te merken en de prijs is echt heel erg laag voor de kwaliteit die je krijgt! Komen we zeer zeker terug.",
+  },
+  {
+    name: "jim van den berg",
+    text: "De beste lunchzaak in Den Haag! Ik ga hier steevast 1 à 2 keer in de week een broodje halen in de pauze, soms gaan we zitten voor een salade of pasta. Alles superlekker, echt authentieke Italiaanse siciliaanse ingrediënten. Broodjes worden altijd vers voor je neus klaargemaakt. Het is altijd genieten, een absolute aanrader. De bediening is prima, in de lunch pauze staan wel altijd rijen, vaak tot buiten. Zeer populair dus.",
+  },
+  {
+    name: "Framed Movie productions",
+    text: "Geweldige Italiaanse broodjes en pasta heerlijke koffie en gezellige atmosfeer... vriendelijk personeel en zeer fatsoenlijk geprijsd... een echte aanrader voor zomaar een broodje of even te gaan lunchen.",
+  },
+];
+---
+
+<section class="section">
+  <div class="container">
+    <p class="eyebrow">Wat klanten zeggen</p>
+    <h2 class="section-title">Beoordeeld met 5 sterren</h2>
+
+    <div class="review-grid">
+      {reviews.map((review) => (
+        <article class="review-card">
+          <div class="stars" aria-label="5 van de 5 sterren">★★★★★</div>
+          <p>&ldquo;{review.text}&rdquo;</p>
+          <p class="review-name">— {review.name}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .review-grid {
+    margin-top: 2.5rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .review-card {
+    background: var(--color-surface-alt);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 1.6rem;
+  }
+
+  .stars {
+    color: var(--color-primary-dark);
+    letter-spacing: 0.15em;
+    margin-bottom: 0.8rem;
+  }
+
+  .review-card p {
+    font-size: 0.95rem;
+  }
+
+  .review-name {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--color-muted);
+    font-size: 0.85rem;
+    margin: 0;
+  }
+
+  @media (max-width: 900px) {
+    .review-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

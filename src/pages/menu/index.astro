@@ -1,0 +1,31 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import MenuSection from "../../components/MenuSection.astro";
+import { vosMenu } from "../../data/menus";
+---
+
+<Layout title="Menu Vos in Tuinstraat" description="Het volledige menu van Gastronomia Lusso aan de Vos in Tuinstraat in Den Haag.">
+  <section class="section menu-header">
+    <div class="container">
+      <p class="eyebrow">Menu</p>
+      <h1 class="section-title">Menu Vos in Tuinstraat</h1>
+      <p class="section-lead">Onze producten worden vers bereid.</p>
+    </div>
+  </section>
+
+  <section class="section menu-body">
+    <div class="container">
+      <MenuSection categories={vosMenu} />
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .menu-header {
+    padding-bottom: 0;
+  }
+
+  .menu-body {
+    padding-top: 1rem;
+  }
+</style>

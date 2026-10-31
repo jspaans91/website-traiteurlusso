@@ -1,0 +1,59 @@
+---
+---
+
+<section class="section video-highlight">
+  <div class="container video-grid">
+    <div class="video-media">
+      <video
+        class="video-player"
+        src="/videos/top-25-broodjes.mov"
+        poster="/images/video-poster.jpg"
+        controls
+        preload="metadata"
+        controlslist="nodownload"
+        playsinline
+      >
+        Je browser ondersteunt deze video niet.
+      </video>
+    </div>
+    <div class="video-copy">
+      <p class="eyebrow">Trots op onze broodjes</p>
+      <h2 class="section-title">
+        Met trots staan wij in de top 25 lekkerste broodjes van Nederland
+      </h2>
+      <p class="section-lead">Klik op het filmpje om te kijken.</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .video-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .video-player {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+    display: block;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-soft);
+    aspect-ratio: 9/16;
+    object-fit: cover;
+    background: var(--color-surface-alt);
+  }
+
+  @media (max-width: 900px) {
+    .video-grid {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .video-media {
+      order: -1;
+    }
+  }
+</style>

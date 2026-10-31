@@ -1,0 +1,114 @@
+---
+import { locations } from "../data/locations";
+---
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Italiaanse delicatessen in Den Haag</p>
+      <h1>Al 15 jaar de plek voor Italiaanse Specialiteiten in Den Haag</h1>
+      <p class="section-lead">
+        Dagelijks vers bereide broodjes, salades en pasta's, midden in het
+        centrum van Den Haag — tegenover Hotel Des Indes en aan de
+        Theresiastraat.
+      </p>
+      <div class="hero-tags">
+        <span>Panini</span>
+        <span>Catering</span>
+        <span>Traiteur</span>
+      </div>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="/menu/">Bekijk volledige menu</a>
+        <a class="btn btn-outline" href="#locaties">Onze locaties</a>
+      </div>
+      <div class="hero-phones">
+        {locations.map((loc) => (
+          <a href={`tel:${loc.phoneHref}`}>
+            <strong>{loc.name}</strong> {loc.phone}
+          </a>
+        ))}
+      </div>
+    </div>
+    <div class="hero-media">
+      <img src="/images/broodje.jpeg" alt="Vers belegd Italiaans broodje bij Gastronomia Lusso" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding: 3.5rem 0 4rem;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 1rem;
+  }
+
+  .hero-tags {
+    display: flex;
+    gap: 0.6rem;
+    margin: 1.4rem 0;
+    flex-wrap: wrap;
+  }
+
+  .hero-tags span {
+    background: var(--color-surface-alt);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    padding: 0.4rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-family: var(--font-heading);
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    flex-wrap: wrap;
+  }
+
+  .hero-phones {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    font-size: 0.92rem;
+    color: var(--color-muted);
+  }
+
+  .hero-phones a {
+    color: var(--color-ink);
+  }
+
+  .hero-phones strong {
+    font-family: var(--font-heading);
+    display: block;
+    font-size: 0.8rem;
+    color: var(--color-muted);
+  }
+
+  .hero-media img {
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-soft);
+    aspect-ratio: 4/3;
+    object-fit: cover;
+  }
+
+  @media (max-width: 900px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-media {
+      order: -1;
+    }
+  }
+</style>

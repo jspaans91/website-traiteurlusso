@@ -1,0 +1,31 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import MenuSection from "../../components/MenuSection.astro";
+import { theresiastraatMenu } from "../../data/menus";
+---
+
+<Layout title="Menu Theresiastraat" description="Het volledige menu van Gastronomia Lusso aan de Theresiastraat in Den Haag.">
+  <section class="section menu-header">
+    <div class="container">
+      <p class="eyebrow">Menu</p>
+      <h1 class="section-title">Menu Theresiastraat</h1>
+      <p class="section-lead">Onze producten worden vers bereid.</p>
+    </div>
+  </section>
+
+  <section class="section menu-body">
+    <div class="container">
+      <MenuSection categories={theresiastraatMenu} />
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .menu-header {
+    padding-bottom: 0;
+  }
+
+  .menu-body {
+    padding-top: 1rem;
+  }
+</style>

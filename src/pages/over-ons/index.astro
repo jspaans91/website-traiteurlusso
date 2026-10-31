@@ -1,0 +1,111 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Over ons" description="Het verhaal van Gastronomia Lusso: 15 jaar Italiaanse passie in Den Haag.">
+  <section class="section story">
+    <div class="container story-grid">
+      <div>
+        <p class="eyebrow">La nostra storia</p>
+        <h1 class="section-title">Ons verhaal</h1>
+        <p>
+          Onze Italiaanse droom begon 15 jaar geleden met het openen van een
+          lunchroom in hartje Den Haag. Inmiddels werkt de tweede generatie
+          ook mee in ons familiebedrijf. Wij blijven ons iedere dag inzetten
+          om de beste kwaliteit en service te bieden voor onze klanten.
+        </p>
+        <p class="italic">Piu di 15 anni di passione....</p>
+      </div>
+      <div class="story-media">
+        <img src="/images/gevel.jpeg" alt="De gevel van Gastronomia Lusso in Den Haag" class="story-image" />
+        <img src="/images/logo-seal.png" alt="Lusso keurmerk: Con Amore, Caffé Pasta Panini, The Hague" class="story-seal" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container feature-grid">
+      <article>
+        <h2>Gevestigd in Den Haag centrum</h2>
+        <p>U vindt ons tegenover Hotel Des Indes en aan de Theresiastraat 48.</p>
+      </article>
+      <article>
+        <h2>Italiaanse koffie</h2>
+        <p>Voor de perfecte espresso komt u naar Lusso.</p>
+      </article>
+      <article>
+        <h2>Bereid met liefde</h2>
+        <p>Alles wordt dagelijks vers en met zorg bereid, zoals het in Italië gewoon is.</p>
+      </article>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .italic {
+    font-style: italic;
+    color: var(--color-muted);
+  }
+
+  .story-media {
+    position: relative;
+  }
+
+  .story-image {
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-soft);
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .story-seal {
+    position: absolute;
+    bottom: -28px;
+    right: -28px;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: var(--color-ink);
+    box-shadow: var(--shadow-soft);
+    padding: 8px;
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .feature-grid article {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 1.8rem;
+  }
+
+  @media (max-width: 900px) {
+    .story-grid,
+    .feature-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .story-media {
+      order: -1;
+    }
+
+    .story-seal {
+      width: 100px;
+      height: 100px;
+      bottom: -16px;
+      right: -16px;
+    }
+  }
+</style>

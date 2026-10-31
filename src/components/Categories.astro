@@ -1,0 +1,102 @@
+---
+const categories = [
+  {
+    title: "Broodjes",
+    description: "Vers belegde Italiaanse broodjes, elke dag opnieuw gemaakt.",
+    image: "/images/broodje.jpeg",
+  },
+  {
+    title: "Salade's",
+    description: "Frisse salades met verse, Italiaanse ingrediënten.",
+    image: "/images/salade.jpeg",
+  },
+  {
+    title: "Pasta's",
+    description: "Traditioneel Italiaans bereid, zoals het hoort.",
+    image: "/images/pasta.jpeg",
+  },
+  {
+    title: "Desserts",
+    description: "Huisgemaakte desserts zoals tiramisu en cannoli.",
+    image: "/images/dessert.jpeg",
+  },
+  {
+    title: "Italiaanse koffie",
+    description: "Koffie en cappuccino op zijn Italiaans, vol van smaak.",
+    image: "/images/koffie-espresso.jpeg",
+  },
+];
+---
+
+<section class="section" id="categories">
+  <div class="container">
+    <p class="eyebrow">Onze specialiteiten</p>
+    <h2 class="section-title">Vers, Italiaans, elke dag</h2>
+    <p class="section-lead">
+      Gastronomia Lusso bestaat ruim 15 jaar en maakt dagelijks verse broodjes,
+      salades en pasta's — midden in het centrum van Den Haag.
+    </p>
+
+    <div class="category-grid">
+      {categories.map((cat) => (
+        <article class="category-card">
+          <img src={cat.image} alt="" loading="lazy" />
+          <h3>{cat.title}</h3>
+          <p>{cat.description}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .category-grid {
+    margin-top: 2.5rem;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.5rem;
+  }
+
+  .category-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    padding-bottom: 1.3rem;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .category-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .category-card img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+  }
+
+  .category-card h3 {
+    font-size: 1.05rem;
+    margin: 1rem 1.1rem 0.4rem;
+  }
+
+  .category-card p {
+    margin: 0 1.1rem;
+    font-size: 0.88rem;
+    color: var(--color-muted);
+  }
+
+  @media (max-width: 1000px) {
+    .category-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .category-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>
