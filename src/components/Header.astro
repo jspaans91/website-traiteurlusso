@@ -260,14 +260,14 @@ const currentPath = new URL(Astro.request.url).pathname;
       left: 0;
       right: 0;
       background: var(--color-surface);
-      border-bottom: 1px solid var(--color-border);
-      box-shadow: var(--shadow-soft);
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.25s ease;
     }
 
     .main-nav.is-open {
+      border-bottom: 1px solid var(--color-border);
+      box-shadow: var(--shadow-soft);
       max-height: 80vh;
       overflow-y: auto;
     }
