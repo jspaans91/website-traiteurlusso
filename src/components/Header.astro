@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
-import { locations } from "../data/locations";
 import logoSeal from "../assets/images/logo-seal.png";
+import CallButton from "./CallButton.astro";
 
 const nav = [
   { href: "/", label: "Home" },
@@ -12,7 +12,6 @@ const nav = [
 ];
 
 const currentPath = new URL(Astro.request.url).pathname;
-const primaryLocation = locations[0];
 ---
 
 <header class="site-header">
@@ -34,14 +33,10 @@ const primaryLocation = locations[0];
           </li>
         ))}
       </ul>
-      <a class="btn btn-primary call-btn call-btn-mobile" href={`tel:${primaryLocation.phoneHref}`}>
-        Bel ons
-      </a>
+      <CallButton class="btn btn-primary call-btn call-btn-mobile" wrapperClass="call-btn-mobile-wrap" />
     </nav>
 
-    <a class="btn btn-primary call-btn call-btn-desktop" href={`tel:${primaryLocation.phoneHref}`}>
-      Bel ons
-    </a>
+    <CallButton class="btn btn-primary call-btn call-btn-desktop" wrapperClass="call-btn-desktop-wrap" />
 
     <button
       type="button"
@@ -140,8 +135,8 @@ const primaryLocation = locations[0];
     flex-wrap: wrap;
   }
 
-  .call-btn-mobile {
-    display: none;
+  :global(.call-dropdown.call-btn-mobile-wrap) {
+    display: none !important;
   }
 
   .nav-toggle {
@@ -196,7 +191,7 @@ const primaryLocation = locations[0];
     color: var(--color-primary-dark);
   }
 
-  .call-btn {
+  :global(.call-btn) {
     flex-shrink: 0;
   }
 
@@ -205,8 +200,8 @@ const primaryLocation = locations[0];
       display: flex;
     }
 
-    .call-btn-desktop {
-      display: none;
+    :global(.call-dropdown.call-btn-desktop-wrap) {
+      display: none !important;
     }
 
     .main-nav {
@@ -246,14 +241,17 @@ const primaryLocation = locations[0];
       padding: 0.9rem 0;
     }
 
-    .main-nav a.call-btn-mobile {
+    :global(.call-dropdown.call-btn-mobile-wrap) {
+      display: block !important;
+    }
+
+    :global(.call-btn-mobile) {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: auto;
+      width: 100%;
       box-sizing: border-box;
       padding: 0.85rem 1.6rem;
-      margin: 1rem 1.5rem 1.25rem;
     }
   }
 

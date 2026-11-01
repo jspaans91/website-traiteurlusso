@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import { locations, openingHours } from "../data/locations";
 import { socialIcons } from "./icons";
 import logoSeal from "../assets/images/logo-seal.png";
+import CallButton from "./CallButton.astro";
 
 const year = new Date().getFullYear();
 
@@ -75,7 +76,7 @@ const socials = [
           <li><span>{o.days}</span><span>{o.hours}</span></li>
         ))}
       </ul>
-      <a class="btn btn-primary" href={`tel:${locations[0].phoneHref}`}>Bel ons</a>
+      <CallButton class="btn btn-primary" />
     </div>
   </div>
 
