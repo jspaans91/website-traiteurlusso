@@ -9,13 +9,17 @@ import videoPoster from "../assets/images/video-poster.jpg";
         class="video-player"
         src="/videos/top-25-broodjes.mov"
         poster={videoPoster.src}
-        controls
         preload="metadata"
         controlslist="nodownload"
         playsinline
       >
         Je browser ondersteunt deze video niet.
       </video>
+      <button type="button" class="video-play" aria-label="Video afspelen">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M8 5v14l11-7z" />
+        </svg>
+      </button>
     </div>
     <div class="video-copy">
       <p class="eyebrow">Trots op onze broodjes</p>
@@ -27,6 +31,20 @@ import videoPoster from "../assets/images/video-poster.jpg";
   </div>
 </section>
 
+<script>
+  document.querySelectorAll<HTMLElement>(".video-media").forEach((media) => {
+    const video = media.querySelector("video");
+    const playButton = media.querySelector<HTMLButtonElement>(".video-play");
+    if (!video || !playButton) return;
+
+    playButton.addEventListener("click", () => {
+      video.setAttribute("controls", "");
+      video.classList.add("is-playing");
+      video.play();
+    });
+  });
+</script>
+
 <style>
   .video-grid {
     display: grid;
@@ -37,6 +55,45 @@ import videoPoster from "../assets/images/video-poster.jpg";
 
   .video-grid > * {
     min-width: 0;
+  }
+
+  .video-media {
+    position: relative;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .video-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4.5rem;
+    height: 4.5rem;
+    border: none;
+    border-radius: 50%;
+    background: rgba(10, 10, 10, 0.55);
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.2s ease, opacity 0.2s ease;
+  }
+
+  .video-play:hover {
+    background: rgba(10, 10, 10, 0.75);
+  }
+
+  .video-play svg {
+    width: 1.8rem;
+    height: 1.8rem;
+    margin-left: 0.15rem;
+  }
+
+  .video-player.is-playing + .video-play {
+    opacity: 0;
+    pointer-events: none;
   }
 
   .video-player {
