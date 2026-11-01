@@ -5,6 +5,9 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
   site: 'https://traiteurlusso.nl',
   trailingSlash: 'always',
+  redirects: {
+    '/over-ons/': '/ons-verhaal/',
+  },
   build: {
     assets: 'assets',
     format: 'directory',
