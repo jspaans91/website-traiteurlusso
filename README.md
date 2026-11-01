@@ -1,43 +1,61 @@
-# Astro Starter Kit: Minimal
+# Gastronomia Lusso
 
-```sh
-npm create astro@latest -- --template minimal
-```
+Astro-website voor Gastronomia Lusso, Italiaanse delicatessenzaak met twee
+vestigingen in Den Haag (Vos in Tuinstraat en Theresiastraat). Gebouwd als
+statische site op basis van de content en huisstijl van de bestaande
+WordPress-site.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
+## Projectstructuur
 
 ```text
 /
 ├── public/
+│   ├── images/          # Logo, categorie- en locatiefoto's
+│   └── videos/           # TikTok-video "top 25 lekkerste broodjes"
 ├── src/
-│   └── pages/
-│       └── index.astro
+│   ├── components/       # Herbruikbare secties (Header, Footer, Hero, ...)
+│   ├── data/              # Menu's (menus.ts) en locaties (locations.ts)
+│   ├── layouts/           # Layout.astro (basis HTML-skelet, fonts, meta)
+│   ├── pages/
+│   │   ├── index.astro               # Homepage
+│   │   ├── menu/                     # Menu Vos in Tuinstraat
+│   │   ├── menu-theresiastraat/      # Menu Theresiastraat
+│   │   ├── over-ons/                 # Ons verhaal
+│   │   └── contact/                  # Contactgegevens & locaties
+│   └── styles/global.css  # Kleuren, typografie, basisstijlen
+├── astro.config.mjs
 └── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Menu-items (prijzen, ingrediënten) staan centraal in `src/data/menus.ts`,
+locatie- en openingstijdengegevens in `src/data/locations.ts`. Pas je iets
+in het menu of de contactgegevens aan, dan hoeft dat maar op één plek.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## Commando's
 
-Any static assets, like images, can be placed in the `public/` directory.
+Alle commando's worden uitgevoerd vanuit de projectmap:
 
-## 🧞 Commands
+| Commando                  | Actie                                              |
+| :------------------------- | :-------------------------------------------------- |
+| `npm install`               | Installeert dependencies                            |
+| `npm run dev`                | Start lokale dev-server op `localhost:4321`          |
+| `npm run build`              | Bouwt de productiesite naar `./dist/`                |
+| `npm run preview`            | Bekijk de build lokaal, vóór deployen                |
+| `npx astro check`            | Type-/diagnostiekcontrole van alle `.astro`-bestanden |
 
-All commands are run from the root of the project, from a terminal:
+## Stijl & configuratie
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+- **Kleuren & fonts**: `src/styles/global.css` (CSS-variabelen), gebaseerd op
+  de huisstijl van de bestaande site (goudgeel `#f5c61c`, Open Sans voor
+  koppen, Work Sans voor body-tekst).
+- **URL's**: `trailingSlash: 'always'` in `astro.config.mjs` — interne links
+  eindigen altijd op `/`.
+- **Build-output**: gebundelde assets komen in `dist/assets/` (ingesteld via
+  `build.assets` in `astro.config.mjs`, in plaats van Astro's standaard
+  `dist/_astro/`).
 
-## 👀 Want to learn more?
+## Content-bronnen
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Teksten, menu's, reviews en FAQ zijn overgenomen van de bestaande website
+(traiteurlusso.nl). Social-links (Facebook, Instagram, TripAdvisor) en het
+logo zijn eveneens van de live site afkomstig.
