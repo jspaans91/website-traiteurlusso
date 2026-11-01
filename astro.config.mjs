@@ -7,5 +7,11 @@ export default defineConfig({
   build: {
     assets: 'assets',
     format: 'directory',
+    inlineStylesheets: 'never',
+  },
+  vite: {
+    build: {
+      assetsInlineLimit: 0,
+    },
   },
 });
