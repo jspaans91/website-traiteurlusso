@@ -1,29 +1,36 @@
 ---
+import { Image } from "astro:assets";
+import broodjeImage from "../assets/images/broodje.jpeg";
+import saladeImage from "../assets/images/salade.jpeg";
+import pastaImage from "../assets/images/pasta.jpeg";
+import dessertImage from "../assets/images/dessert.jpeg";
+import koffieImage from "../assets/images/koffie-espresso.jpeg";
+
 const categories = [
   {
     title: "Broodjes",
     description: "Vers belegde Italiaanse broodjes, elke dag opnieuw gemaakt.",
-    image: "/images/broodje.jpeg",
+    image: broodjeImage,
   },
   {
     title: "Salade's",
     description: "Frisse salades met verse, Italiaanse ingrediënten.",
-    image: "/images/salade.jpeg",
+    image: saladeImage,
   },
   {
     title: "Pasta's",
     description: "Traditioneel Italiaans bereid, zoals het hoort.",
-    image: "/images/pasta.jpeg",
+    image: pastaImage,
   },
   {
     title: "Desserts",
     description: "Huisgemaakte desserts zoals tiramisu en cannoli.",
-    image: "/images/dessert.jpeg",
+    image: dessertImage,
   },
   {
     title: "Italiaanse koffie",
     description: "Koffie en cappuccino op zijn Italiaans, vol van smaak.",
-    image: "/images/koffie-espresso.jpeg",
+    image: koffieImage,
   },
 ];
 ---
@@ -40,7 +47,7 @@ const categories = [
     <div class="category-grid">
       {categories.map((cat) => (
         <article class="category-card">
-          <img src={cat.image} alt="" loading="lazy" />
+          <Image src={cat.image} alt="" loading="lazy" />
           <h3>{cat.title}</h3>
           <p>{cat.description}</p>
         </article>

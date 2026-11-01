@@ -1,6 +1,8 @@
 ---
+import { Image } from "astro:assets";
 import { locations, openingHours } from "../data/locations";
 import { socialIcons } from "./icons";
+import logoSeal from "../assets/images/logo-seal.png";
 
 const year = new Date().getFullYear();
 
@@ -19,7 +21,7 @@ const socials = [
   <div class="container footer-grid">
     <div class="footer-col">
       <a href="/" class="logo">
-        <img src="/images/logo-seal.png" alt="Gastronomia Lusso" class="logo-mark" width="64" height="64" />
+        <Image src={logoSeal} alt="Gastronomia Lusso" class="logo-mark" width={64} height={64} />
         <span class="logo-text">Gastronomia Lusso</span>
       </a>
       <p>

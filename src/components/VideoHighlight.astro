@@ -1,4 +1,5 @@
 ---
+import videoPoster from "../assets/images/video-poster.jpg";
 ---
 
 <section class="section video-highlight">
@@ -7,7 +8,7 @@
       <video
         class="video-player"
         src="/videos/top-25-broodjes.mov"
-        poster="/images/video-poster.jpg"
+        poster={videoPoster.src}
         controls
         preload="metadata"
         controlslist="nodownload"

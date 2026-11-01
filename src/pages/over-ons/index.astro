@@ -1,5 +1,8 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "../../layouts/Layout.astro";
+import gevelImage from "../../assets/images/gevel.jpeg";
+import logoSeal from "../../assets/images/logo-seal.png";
 ---
 
 <Layout title="Over ons" description="Het verhaal van Gastronomia Lusso: 15 jaar Italiaanse passie in Den Haag.">
@@ -17,8 +20,8 @@ import Layout from "../../layouts/Layout.astro";
         <p class="italic">Piu di 15 anni di passione....</p>
       </div>
       <div class="story-media">
-        <img src="/images/gevel.jpeg" alt="De gevel van Gastronomia Lusso in Den Haag" class="story-image" />
-        <img src="/images/logo-seal.png" alt="Lusso keurmerk: Con Amore, Caffé Pasta Panini, The Hague" class="story-seal" />
+        <Image src={gevelImage} alt="De gevel van Gastronomia Lusso in Den Haag" class="story-image" />
+        <Image src={logoSeal} alt="Lusso keurmerk: Con Amore, Caffé Pasta Panini, The Hague" class="story-seal" />
       </div>
     </div>
   </section>

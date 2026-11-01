@@ -1,5 +1,7 @@
 ---
+import { Image } from "astro:assets";
 import { locations } from "../data/locations";
+import logoSeal from "../assets/images/logo-seal.png";
 
 const nav = [
   { href: "/", label: "Home" },
@@ -17,7 +19,7 @@ const primaryLocation = locations[0];
   <div class="container header-inner">
     <a href="/" class="logo">
       <span class="logo-badge">
-        <img src="/images/logo-seal.png" alt="Gastronomia Lusso" width="64" height="64" />
+        <Image src={logoSeal} alt="Gastronomia Lusso" width={64} height={64} />
       </span>
       <span class="logo-text">Gastronomia Lusso</span>
     </a>

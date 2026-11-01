@@ -1,5 +1,7 @@
 ---
+import { Image } from "astro:assets";
 import { locations } from "../data/locations";
+import broodjeImage from "../assets/images/broodje.jpeg";
 ---
 
 <section class="hero">
@@ -30,7 +32,7 @@ import { locations } from "../data/locations";
       </div>
     </div>
     <div class="hero-media">
-      <img src="/images/broodje.jpeg" alt="Vers belegd Italiaans broodje bij Gastronomia Lusso" />
+      <Image src={broodjeImage} alt="Vers belegd Italiaans broodje bij Gastronomia Lusso" />
     </div>
   </div>
 </section>
