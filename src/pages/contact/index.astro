@@ -1,15 +1,32 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "../../layouts/Layout.astro";
 import { locations, openingHours } from "../../data/locations";
+import contactHero from "../../assets/images/contact-hero.jpg";
 ---
 
 <Layout title="Contact" description="Neem contact op met Gastronomia Lusso in Den Haag voor vragen of bestellingen.">
-  <section class="section">
-    <div class="container">
+  <section class="page-hero">
+    <div class="page-hero-media">
+      <Image
+        src={contactHero}
+        alt="Koffie en belegd broodje met prosciutto en tomaat bij Gastronomia Lusso"
+        widths={[640, 960, 1440, 2000]}
+        sizes="100vw"
+        quality={80}
+        loading="eager"
+        fetchpriority="high"
+      />
+    </div>
+    <div class="container page-hero-content">
       <p class="eyebrow">Contact</p>
       <h1 class="section-title">Neem contact met ons op voor al je vragen</h1>
       <p class="section-lead">Bestellen? Bel vóór 10:00 uur en vanaf 4 broodjes.</p>
+    </div>
+  </section>
 
+  <section class="section">
+    <div class="container">
       <div class="notice">
         <strong>Let op:</strong> zorg ervoor dat je de juiste vestiging kiest
         bij het plaatsen van je bestelling, zodat we je zo goed mogelijk van
@@ -50,6 +67,62 @@ import { locations, openingHours } from "../../data/locations";
 </Layout>
 
 <style>
+  .page-hero {
+    position: relative;
+    min-height: 64vh;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    color: #fff;
+  }
+
+  .page-hero-media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .page-hero-media :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .page-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(180deg, rgba(10, 10, 10, 0.15) 0%, rgba(10, 10, 10, 0.8) 100%);
+  }
+
+  .page-hero-content {
+    position: relative;
+    z-index: 2;
+    padding-top: 4rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .page-hero-content .eyebrow {
+    color: var(--color-primary);
+  }
+
+  .page-hero-content .section-title {
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 18px rgba(0, 0, 0, 0.35);
+  }
+
+  .page-hero-content .section-lead {
+    color: rgba(255, 255, 255, 0.88);
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 900px) {
+    .page-hero {
+      min-height: 38vh;
+    }
+  }
+
   .notice {
     background: #fff7e0;
     border: 1px solid var(--color-primary);
