@@ -51,11 +51,11 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
     <meta name="twitter:image" content={socialImage} />
   </head>
   <body>
-    <a class="skip-link" href="#content">Direct naar inhoud</a>
-    <Header />
+    <a class="skip-link" href="#main-nav">Direct naar navigatie</a>
     <main id="content">
       <slot />
     </main>
     <Footer />
+    <Header />
   </body>
 </html>
