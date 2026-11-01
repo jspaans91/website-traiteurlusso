@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import logoSeal from "../assets/images/logo-seal.png";
+import logoHeader from "../assets/images/logo-header.png";
 import CallButton from "./CallButton.astro";
 
 const nav = [
@@ -18,7 +18,7 @@ const currentPath = new URL(Astro.request.url).pathname;
   <div class="container header-inner">
     <a href="/" class="logo">
       <span class="logo-badge">
-        <Image src={logoSeal} alt="Gastronomia Lusso" width={64} height={64} />
+        <Image src={logoHeader} alt="Gastronomia Lusso" width={64} height={64} />
       </span>
       <span class="logo-text">Gastronomia Lusso</span>
     </a>
@@ -53,6 +53,16 @@ const currentPath = new URL(Astro.request.url).pathname;
 </header>
 
 <script>
+  const header = document.querySelector<HTMLElement>(".site-header");
+
+  if (header) {
+    const onScroll = () => {
+      header.classList.toggle("is-scrolled", window.scrollY > 10);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+  }
+
   const toggle = document.querySelector<HTMLButtonElement>(".nav-toggle");
   const nav = document.getElementById("main-nav");
 
@@ -79,11 +89,19 @@ const currentPath = new URL(Astro.request.url).pathname;
 
 <style>
   .site-header {
-    border-bottom: 1px solid var(--color-border);
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
+    background: transparent;
+    transition: background-color 0.25s ease;
+  }
+
+  .site-header.is-scrolled,
+  .site-header:has(.main-nav.is-open) {
     background: var(--color-surface);
-    z-index: 50;
+    border-bottom: 1px solid var(--color-border);
+    box-shadow: var(--shadow-soft);
   }
 
   .header-inner {
@@ -126,6 +144,14 @@ const currentPath = new URL(Astro.request.url).pathname;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    color: #fff;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
+  }
+
+  .site-header.is-scrolled .logo-text,
+  .site-header:has(.main-nav.is-open) .logo-text {
+    color: var(--color-ink);
+    text-shadow: none;
   }
 
   .main-nav ul {
@@ -149,18 +175,28 @@ const currentPath = new URL(Astro.request.url).pathname;
     height: 42px;
     flex-shrink: 0;
     background: transparent;
-    border: 1px solid var(--color-border);
+    border: 1px solid rgba(255, 255, 255, 0.6);
     border-radius: 10px;
     padding: 0;
+  }
+
+  .site-header.is-scrolled .nav-toggle,
+  .site-header:has(.main-nav.is-open) .nav-toggle {
+    border-color: var(--color-border);
   }
 
   .nav-toggle span {
     display: block;
     width: 20px;
     height: 2px;
-    background: var(--color-ink);
+    background: #fff;
     border-radius: 2px;
     transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .site-header.is-scrolled .nav-toggle span,
+  .site-header:has(.main-nav.is-open) .nav-toggle span {
+    background: var(--color-ink);
   }
 
   .nav-toggle[aria-expanded="true"] span:nth-child(1) {
@@ -179,15 +215,29 @@ const currentPath = new URL(Astro.request.url).pathname;
     font-family: var(--font-heading);
     font-weight: 600;
     font-size: 0.92rem;
-    color: var(--color-ink);
+    color: #fff;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
     padding: 0.4rem 0;
     border-bottom: 2px solid transparent;
-    transition: border-color 0.15s ease, color 0.15s ease;
+    transition: border-color 0.15s ease;
+  }
+
+  .site-header.is-scrolled .main-nav a,
+  .site-header:has(.main-nav.is-open) .main-nav a {
+    color: var(--color-ink);
+    text-shadow: none;
   }
 
   .main-nav a:hover,
   .main-nav a[aria-current="page"] {
     border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+
+  .site-header.is-scrolled .main-nav a:hover,
+  .site-header.is-scrolled .main-nav a[aria-current="page"],
+  .site-header:has(.main-nav.is-open) .main-nav a:hover,
+  .site-header:has(.main-nav.is-open) .main-nav a[aria-current="page"] {
     color: var(--color-primary-dark);
   }
 
